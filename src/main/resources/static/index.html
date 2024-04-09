@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Survey Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Student Survey Form</h2>
+        <form action="/surveys/submit" method="post">
+            <!-- Personal Information Section -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Street Address</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state" name="state" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="zip">Zip</label>
+                    <input type="text" class="form-control" id="zip" name="zip" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telephone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="dateOfSurvey">Date of Survey</label>
+                <input type="date" class="form-control" id="dateOfSurvey" name="dateOfSurvey" required>
+            </div>
+
+            <!-- Checkboxes Section -->
+            <div class="form-group">
+                <label>What did you like most about the campus?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="students" name="likesAboutCampus" value="students">
+                    <label class="form-check-label" for="students">
+                    Students
+                </label><br>
+                    <input class="form-check-input" type="checkbox" id="location" name="likesAboutCampus" value="location">
+                    <label class="form-check-label" for="location">
+                    Location
+                </label><br>
+                    <input class="form-check-input" type="checkbox" id="campus" name="likesAboutCampus" value="campus">
+                    <label class="form-check-label" for="campus">
+                    Campus
+                </label><br>
+                    <input class="form-check-input" type="checkbox" id="atm" name="likesAboutCampus" value="atm">
+                    <label class="form-check-label" for="atm">
+                    Atmosphere
+                </label><br>
+                    <input class="form-check-input" type="checkbox" id="dorm" name="likesAboutCampus" value="dorm">
+                    <label class="form-check-label" for="dorm">
+                    Dorm Rooms
+                </label><br>
+                    <input class="form-check-input" type="checkbox" id="sports" name="likesAboutCampus" value="sports">
+                    <label class="form-check-label" for="sports">
+                    Sports
+                </label><br>
+                </div>
+            </div>
+
+            <!-- Radio Buttons Section -->
+            <div class="form-group">
+                <label>How did you become interested in the university?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="interestSource" id="friends" value="friends" required>
+                    <label class="form-check-label" for="friends">
+                    Friends
+                </label><br>
+                    <input class="form-check-input" type="radio" name="interestSource" id="tel" value="tel" required>
+                    <label class="form-check-label" for="tel">
+                    Television
+                </label><br>
+                    <input class="form-check-input" type="radio" name="interestSource" id="internet" value="internet" required>
+                    <label class="form-check-label" for="internet">
+                    Internet
+                </label><br>
+                    <input class="form-check-input" type="radio" name="interestSource" id="other" value="other" required>
+                    <label class="form-check-label" for="other">
+                Other
+            </label><br>
+
+                </div>
+            </div>
+
+            <!-- Dropdown List Section -->
+            <div class="form-group">
+                <label for="likelihoodOfRecommendation">Likelihood of recommending this school</label>
+                <select class="form-control" id="likelihoodOfRecommendation" name="likelihoodOfRecommendation" required>
+                <option value="Very Likely">Very Likely</option>
+                <option value="Likely">Likely</option>
+                <option value="Unlikely">Unlikely</option>
+            </select>
+            </div>
+
+            <!-- Raffle Section -->
+            <div class="form-group">
+                <label for="raffle">Raffle</label>
+                <input type="text" class="form-control" id="raffle" name="raffle" placeholder="Enter at least ten comma separated numbers ranging from 1 through 100" required>
+            </div>
+
+            <!-- Additional Comments Section -->
+            <div class="form-group">
+                <label for="additionalComments">Additional Comments</label>
+                <textarea class="form-control" id="additionalComments" name="additionalComments" rows="3"></textarea>
+            </div>
+
+            <!-- Submit and Cancel Buttons -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary">Cancel</button>
+            <button type="button" class="btn btn-primary" id="viewRecordsBtn">View Records</button>
+        </form>
+    </div>
+    <div id="recordsContainer"></div>
+    <script>
+        // Function to fetch and display all records
+        async function viewRecords() {
+            try {
+                const response = await fetch('/surveys');
+                const data = await response.json();
+
+                const table = document.createElement('table');
+                table.className = 'table';
+                table.innerHTML = `
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Likes About Campus</th>
+                    <th>Interest Source</th>
+                    <th>Likelihood of Recommendation</th>
+                    <th>Raffle</th>
+                    <th>Additional Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        `;
+
+                const tbody = table.querySelector('tbody');
+                data.forEach(survey => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                <td>${survey.id}</td>
+                <td>${survey.firstName}</td>
+                <td>${survey.lastName}</td>
+                <td>${survey.address}</td>
+                <td>${survey.city}</td>
+                <td>${survey.state}</td>
+                <td>${survey.zip}</td>
+                <td>${survey.phone}</td>
+                <td>${survey.email}</td>
+                <td>${survey.likesAboutCampus}</td>
+                <td>${survey.interestSource}</td>
+                <td>${survey.likelihoodOfRecommendation}</td>
+                <td>${survey.raffle}</td>
+                <td>${survey.additionalComments}</td>
+                <td><button class="btn btn-danger" onclick="deleteSurvey(${survey.id})">Delete</button></td>
+            `;
+                    tbody.appendChild(row);
+                });
+
+                // Replace the existing records container with the new table
+                const recordsContainer = document.getElementById('recordsContainer');
+                recordsContainer.innerHTML = '';
+                recordsContainer.appendChild(table);
+            } catch (error) {
+                console.error('Error fetching records:', error);
+            }
+        }
+
+
+
+        function deleteSurvey(id) {
+            fetch(`/surveys/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Reload the table after successful deletion
+                        viewRecords();
+                    } else {
+                        console.error('Failed to delete survey');
+                    }
+                })
+                .catch(error => console.error('Error deleting survey:', error));
+        }
+
+        // Attach the viewRecords function to the button click event
+        document.getElementById('viewRecordsBtn').addEventListener('click', viewRecords);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
