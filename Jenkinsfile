@@ -49,7 +49,7 @@ pipeline {
       stage('Deploying to Rancher as Load Balancer') {
             steps {
                 withCredentials([file(credentialsId: "$KUBECONFIG_CREDENTIALS_ID", variable: 'KUBECONFIG')]) {
-                    sh 'kubectl set image deployment/survey-app-deployment swe=$DOCKER_IMAGE'
+                    sh 'kubectl set image deployment/swe swe=$DOCKER_IMAGE'
                 }
             }
         }
