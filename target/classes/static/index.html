@@ -224,6 +224,7 @@
                 .then(response => {
                     if (response.ok) {
                         // Reload the table after successful deletion
+                        alert("Deleted successfully");
                         viewRecords();
                     } else {
                         console.error('Failed to delete survey');

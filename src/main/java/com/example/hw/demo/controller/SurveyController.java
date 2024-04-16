@@ -40,19 +40,33 @@ public ResponseEntity<List<Survey>> getAllSurveys() {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteSurvey(@PathVariable Long id) {
-        Optional<Survey> surveyOptional = surveyRepository.findById(id);
-        if (surveyOptional.isPresent()) {
-            surveyRepository.deleteById(id);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+public ResponseEntity<?> deleteSurvey(@PathVariable Long id) {
+    Optional<Survey> surveyOptional = this.surveyRepository.findById(id);
+    if (surveyOptional.isPresent()) {
+        this.surveyRepository.deleteById(id);
+        // Use ResponseEntity.ok() with body included directly
+        return ResponseEntity.ok().body("Deleted successfully");
+    } else {
+        // Correctly return a response entity with a not found status and message
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Survey not found");
     }
+}
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Survey> updateSurvey(@PathVariable Long id, @RequestBody Survey survey) {
-        Survey updatedSurvey = surveyService.updateSurvey(id, survey);
-        return new ResponseEntity<>(updatedSurvey, HttpStatus.OK);
+
+@PutMapping("/{id}")
+public ResponseEntity<?> updateSurvey(@PathVariable Long id, @RequestBody Survey survey) {
+    Optional<Survey> existingSurveyOptional = surveyRepository.findById(id);
+    if (existingSurveyOptional.isPresent()) {
+        Survey existingSurvey = existingSurveyOptional.get();
+        existingSurvey.setFirstName(survey.getFirstName());
+        existingSurvey.setLastName(survey.getLastName());
+        // Update other fields as needed
+
+        Survey updatedSurvey = surveyService.saveSurvey(existingSurvey); // Assuming saveSurvey also updates
+        return ResponseEntity.ok().body(updatedSurvey);
+    } else {
+        return ResponseEntity.notFound().build();
     }
+}
+
 }

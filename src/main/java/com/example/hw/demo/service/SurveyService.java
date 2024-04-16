@@ -33,6 +33,8 @@ public class SurveyService {
         Survey survey = getSurveyById(id);
         if (survey != null) {
             // Update fields
+            survey.setFirstName(updatedSurvey.getFirstName());
+            survey.setLastName(updatedSurvey.getLastName());
             return saveSurvey(survey);
         }
         return null;
