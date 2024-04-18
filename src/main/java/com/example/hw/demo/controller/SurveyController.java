@@ -58,16 +58,30 @@ public ResponseEntity<?> updateSurvey(@PathVariable Long id, @RequestBody Survey
     Optional<Survey> existingSurveyOptional = surveyRepository.findById(id);
     if (existingSurveyOptional.isPresent()) {
         Survey existingSurvey = existingSurveyOptional.get();
-        existingSurvey.setFirstName(survey.getFirstName());
-        existingSurvey.setLastName(survey.getLastName());
-        existingSurvey.setAddress(survey.getAddress());
-        // Update other fields as needed
 
-        Survey updatedSurvey = surveyService.saveSurvey(existingSurvey); // Assuming saveSurvey also updates
+        // Update firstName if it's present in the request
+        if (survey.getFirstName() != null) {
+            existingSurvey.setFirstName(survey.getFirstName());
+        }
+
+        // Update lastName if it's present in the request
+        if (survey.getLastName() != null) {
+            existingSurvey.setLastName(survey.getLastName());
+        }
+
+        // Update address if it's present in the request
+        if (survey.getAddress() != null) {
+            existingSurvey.setAddress(survey.getAddress());
+        }
+
+        // Assume there are other fields to update similarly
+
+        Survey updatedSurvey = surveyService.saveSurvey(existingSurvey);
         return ResponseEntity.ok().body(updatedSurvey);
     } else {
         return ResponseEntity.notFound().build();
     }
 }
+
 
 }
