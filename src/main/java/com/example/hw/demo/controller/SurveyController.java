@@ -60,6 +60,7 @@ public ResponseEntity<?> updateSurvey(@PathVariable Long id, @RequestBody Survey
         Survey existingSurvey = existingSurveyOptional.get();
         existingSurvey.setFirstName(survey.getFirstName());
         existingSurvey.setLastName(survey.getLastName());
+        existingSurvey.setAddress(survey.getAddress());
         // Update other fields as needed
 
         Survey updatedSurvey = surveyService.saveSurvey(existingSurvey); // Assuming saveSurvey also updates
