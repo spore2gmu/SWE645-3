@@ -74,7 +74,37 @@ public ResponseEntity<?> updateSurvey(@PathVariable Long id, @RequestBody Survey
             existingSurvey.setAddress(survey.getAddress());
         }
 
-        // Assume there are other fields to update similarly
+        if (survey.getCity() != null) {
+            existingSurvey.setCity(survey.getCity());
+        }
+        if (survey.getState() != null) {
+            existingSurvey.setState(survey.getState());
+        }
+        if (survey.getZip() != null) {
+            existingSurvey.setZip(survey.getZip());
+        }
+        if (survey.getPhone() != null) {
+            existingSurvey.setPhone(survey.getPhone());
+        }
+        if (survey.getEmail() != null) {
+            existingSurvey.setEmail(survey.getEmail());
+        }
+        if (survey.getLikesAboutCampus() != null) {
+            existingSurvey.setLikesAboutCampus(survey.getLikesAboutCampus());
+        }
+        if (survey.getInterestSource() != null) {
+            existingSurvey.setInterestSource(survey.getInterestSource());
+        }
+        if (survey.getLikelihoodOfRecommendation() != null) {
+            existingSurvey.setLikelihoodOfRecommendation(survey.getLikelihoodOfRecommendation());
+        }
+        if (survey.getRaffle() != null) {
+            existingSurvey.setRaffle(survey.getRaffle());
+        }
+        if (survey.getAdditionalComments() != null) {
+            existingSurvey.setAdditionalComments(survey.getAdditionalComments());
+        }
+
 
         Survey updatedSurvey = surveyService.saveSurvey(existingSurvey);
         return ResponseEntity.ok().body(updatedSurvey);
