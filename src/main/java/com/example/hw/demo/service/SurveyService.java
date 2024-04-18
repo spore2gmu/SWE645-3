@@ -35,6 +35,7 @@ public class SurveyService {
             // Update fields
             survey.setFirstName(updatedSurvey.getFirstName());
             survey.setLastName(updatedSurvey.getLastName());
+            survey.setAddress(updatedSurvey.getAddress());
             return saveSurvey(survey);
         }
         return null;
